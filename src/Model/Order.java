@@ -7,8 +7,6 @@ package Model;
 
 import java.io.Serializable;
 
-import jclients.OrderStatus;
-
 /**
  *
  * @author shreejal
@@ -68,6 +66,10 @@ public class Order implements Serializable {
 		return Status;
 	}
 
+	public String getStatusString() {
+		return Status.toString();
+	}
+
 	public void setStatus(OrderStatus Status) {
 		this.Status = Status;
 	}
@@ -88,28 +90,28 @@ public class Order implements Serializable {
 	}
 
 	public static OrderStatus castObject(String str) {
-		if (str.equals(OrderStatus.CANCELLED)) {
+		if (str.trim().equals(OrderStatus.CANCELLED.toString())) {
 			return OrderStatus.CANCELLED;
 		}
-		if (str.equals(OrderStatus.COOKED)) {
+		if (str.trim().equals(OrderStatus.COOKED.toString())) {
 			return OrderStatus.COOKED;
 		}
-		if (str.equals(OrderStatus.COOKING)) {
+		if (str.trim().equals(OrderStatus.COOKING.toString())) {
 			return OrderStatus.COOKING;
 		}
-		if (str.equals(OrderStatus.DELIVERED)) {
+		if (str.trim().equals(OrderStatus.DELIVERED.toString())) {
 			return OrderStatus.DELIVERED;
 		}
-		if (str.equals(OrderStatus.ONBILL)) {
+		if (str.trim().equals(OrderStatus.ONBILL.toString())) {
 			return OrderStatus.ONBILL;
 		}
-		if (str.equals(OrderStatus.ORDER_IN)) {
+		if (str.trim().equals(OrderStatus.ORDER_IN.toString())) {
 			return OrderStatus.ORDER_IN;
 		}
-		if (str.equals(OrderStatus.PAID)) {
+		if (str.trim().equals(OrderStatus.PAID.toString())) {
 			return OrderStatus.PAID;
 		}
-		if (str.equals(OrderStatus.CANCELLED)) {
+		if (str.trim().equals(OrderStatus.CANCELLED.toString())) {
 			return OrderStatus.CANCELLED;
 		} else
 			return null;

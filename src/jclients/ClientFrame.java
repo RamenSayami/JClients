@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import Model.Order;
@@ -195,6 +196,7 @@ public class ClientFrame extends javax.swing.JFrame {
         
          try {
         TableModel model = jTable1.getModel();
+        DefaultTableModel dtm = (DefaultTableModel)jTable1.getModel();
         int[] index = jTable1.getSelectedRows();
         //ArrayList<User> list = ListUser();
        ObjectOutputStream oos = (new ObjectOutputStream(client.socket.getOutputStream()));
@@ -213,6 +215,7 @@ public class ClientFrame extends javax.swing.JFrame {
                 //model2.addRow(rowData);
             
             	Order order = new Order((int)rowData[0],(String)rowData[1], (int)rowData[2], (String)rowData[3], (int)rowData[4]);
+            	dtm.addRow(new Object[]{order.getTableNo(),order.getDishName(),order.getQuantity(),order.getStatusString(),order.getUnitPrice()});
             	
                 oos.writeObject(order);
                //client.send(new Order(3, "Username", 3, OrderStatus.COOKED,778));
